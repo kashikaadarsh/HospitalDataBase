@@ -44,23 +44,24 @@ app.get("/users/register", checkAuthenticated, (req, res) => {
     res.render("register.ejs");
   });
   
-// app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
-//     res.render("dashboard", { user: req.user });
-//   });
+app.get("/users/dashboard", checkNotAuthenticated, (req, res) => {
+    res.render("dashboard", { user: req.user });
+  });
   
-// app.get('/getAll', (request, response) => {
-//     const db = dbService.getDbServiceInstance();
+app.get('/getAll', (request, response) => {
+    const db = dbService.getDbServiceInstance();
   
-//     const result = db.getAllData();
-//     result
-//     .then(data => {
-//             response.json({data : data})
-//         })
-//     .catch(err => console.log(err));
-//   });
+    const result = db.getAllData();
+    result
+    .then(data => {
+            response.json({data : data})
+        })
+    .catch(err => console.log(err));
+  });
   
 app.post('/users/register', (request,response) => {
     const db = dbService.getDbServiceInstance();
+
     const { username,email,password}= request.body;
     // console.log(username,email,password,plan);
     const result = db.registerUser(username,email,password);
@@ -70,14 +71,14 @@ app.post('/users/register', (request,response) => {
     .catch(err => console.log(err));
   })
   
-  // app.post(
-  //   "/users/login",
-  //   passport.authenticate("local", {
-  //     successRedirect: "/users/dashboard",
-  //     failureRedirect: "/users/login",
-  //     failureFlash: true
-  //   })
-  // );
+  app.post(
+    "/users/login",
+    passport.authenticate("local", {
+      successRedirect: "/users/dashboard",
+      failureRedirect: "/users/login",
+      failureFlash: true
+    })
+  );
   
   // app.get("/users/logout", (req, res) => {
   //   req.logout();
@@ -91,12 +92,12 @@ app.post('/users/register', (request,response) => {
     next();
   }
   
-  // function checkNotAuthenticated(req, res, next) {
-  //   if (req.isAuthenticated()) {
-  //     return next();
-  //   }
-  //   res.redirect("/users/login");
-  // }
+  function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+    res.redirect("/users/login");
+  }
   
   
   // Adding new visitor

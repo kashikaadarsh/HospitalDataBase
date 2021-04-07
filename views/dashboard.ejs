@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="/train.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<style>
+  .center {
+  margin: auto;
+  width: 20%;
+  padding: 25px;
+  } 
+</style>
+
+<body>
+
+  <!-- Side Navigation -->
+  <div id="nav"></div>
+  
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <br><br>
+  <div class="w3-row-padding">
+
+    <div class="w3-half">
+      <form class="w3-container w3-card-4 w3-teal">
+        <h2>Enter name of hospital</h2>
+        <div class="w3-section">
+          <input id="search-pnr-box" class="w3-input" type="number" required>
+          <label>Enter name</label>
+        </div>
+        <button type="button" onclick="searchPNR()">Search</button>
+        <br><br>
+      </form>
+    </div>
+    
+
+    <div class="w3-half">
+      <form class="w3-container w3-card-4 w3-teal">
+        <h2>Enter Doctor's Name</h2>
+        <div class="w3-section">
+          <input id="search-train-box" class="w3-input" type="number" required>
+          <label>Enter name</label>
+        </div>
+        <button type="button" onclick="searchTrain()">Search</button>
+        <br><br>
+      </form>
+    </div>
+
+  </div>  
+
+  <br><br>
+
+  <!--<div class="w3-padding w3-white w3-display-container">
+    <h2 class="center">Some Facts</h2>
+    <p>The world's longest railway platform is in India at : Gorakhpur.</p>
+    <p>The Highest railway station in India : Ghum railway station (West Bengal).</p>
+    <p>Indian Railways transports almost 2.5 crore passengers daily.</p>
+  </div>!-->
+
+  <br><br>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/scripts/template.js"></script>
+
+  
+  
+  
+  <!--<script>
+    
+    
+    
+    function searchPNR() {
+      let pnr_num = document.getElementById("search-pnr-box").value;
+      let link = window.location.href;
+      let res = link.split("/users/");
+      let host=res[0];
+      let url = host+'/ticketdetail/'+pnr_num;
+      window.location.href = url;
+    }
+    function searchTrain() {
+      let x = document.getElementById("search-train-box").value;
+      let link = window.location.href;
+      let res = link.split("/users/");
+      let host = res[0];
+      let url = host+'/traindetail/'+x;
+      window.location.href = url;
+    }
+  </script>!-->
+
+
+</body>
+
+</html>

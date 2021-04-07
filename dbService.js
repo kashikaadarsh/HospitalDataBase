@@ -90,26 +90,26 @@ async authUser(email) {
     }
 }
 
-// async deserializeUser(id) {
-//     try {
-//         const user = await new Promise((resolve, reject) => {
-//             const query = "SELECT * FROM users WHERE id = ?";
-//             connection.query(query, [id] , (err, result) => {
-//                 if (err) reject(new Error(err.message));
-//                 resolve(result);
-//             })
-//         });
-//         if(user.length==0)
-//         {
-//             return {
-//                 userFound : false
-//             };
-//         }
-//         return user;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
+async deserializeUser(id) {
+    try {
+        const user = await new Promise((resolve, reject) => {
+            const query = "SELECT * FROM users WHERE id = ?";
+            connection.query(query, [id] , (err, result) => {
+                if (err) reject(new Error(err.message));
+                resolve(result);
+            })
+        });
+        if(user.length==0)
+        {
+            return {
+                userFound : false
+            };
+        }
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async getAllData() {
     try {
